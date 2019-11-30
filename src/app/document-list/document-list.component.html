@@ -1,0 +1,38 @@
+<input>
+<mat-table class="mat-elevation-z8" #table [dataSource]="data">
+
+  <ng-container matColumnDef="documento">
+    <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+    <mat-cell *matCellDef="let doc">{{ doc.status.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="autor">
+    <mat-header-cell *matHeaderCellDef>Documento</mat-header-cell>
+    <mat-cell *matCellDef="let doc">{{ doc.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="firmante">
+    <mat-header-cell *matHeaderCellDef>Autor</mat-header-cell>
+    <mat-cell *matCellDef="let doc">{{doc.user.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="creado">
+    <mat-header-cell *matHeaderCellDef>Firmante</mat-header-cell>
+    <mat-cell *matCellDef="let doc;"><a *ngFor="let d of doc.sign_requests">{{d.name | slice:0:6}}	&nbsp;</a></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="creado2">
+      <mat-header-cell *matHeaderCellDef>Creado</mat-header-cell>
+      <mat-cell *matCellDef="let doc;">{{doc.created_at| date:shortDate}}</mat-cell>
+    </ng-container>
+
+  <ng-container matColumnDef="click">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let users; let i = index">icono</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
+
+</mat-table>
