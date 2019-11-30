@@ -23,7 +23,7 @@
 
   <ng-container matColumnDef="creado2">
       <mat-header-cell *matHeaderCellDef>Creado</mat-header-cell>
-      <mat-cell *matCellDef="let doc;">{{doc.created_at| date:shortDate}}</mat-cell>
+      <mat-cell *matCellDef="let doc;">{{doc.created_at| date:"shortDate"}}</mat-cell>
     </ng-container>
 
   <ng-container matColumnDef="click">
